@@ -1,3 +1,5 @@
+-- I use dBeaver for mySQL local projects
+
 CREATE TABLE Guest (
     guestID INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(40) NOT NULL,
@@ -59,10 +61,10 @@ CREATE TABLE Review (
 
 
 CREATE TABLE BookingServices (
-    bookingID INT,  -- Foreign key linking to the Booking table
-    serviceID INT,  -- Foreign key linking to the Service table
-    quantity INT,   -- Number of times the service is booked
-    PRIMARY KEY (bookingID, serviceID),  -- Composite primary key
+    bookingID INT,
+    serviceID INT,
+    quantity INT,
+    PRIMARY KEY (bookingID, serviceID),
     FOREIGN KEY (bookingID) REFERENCES Booking(bookingID),
     FOREIGN KEY (serviceID) REFERENCES Service(serviceID)
 );
