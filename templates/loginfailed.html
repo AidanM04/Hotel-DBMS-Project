@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Login Failed</title>
     <link href="{{ url_for('static', filename='styles/loginstyle.css')}}" rel="stylesheet" />
 </head>
 <!--
-This page should allow for database administator login
+This page should allow for database administator login retries if they fail an initial login
 -->
 <body>
-    <h1>Admin Login</h1>
+    <h1>Admin Login Failed</h1>
+    <h2>Try Again?</h2>
     <div class="login-container">
         <form action="/databaseAccess">
             <div class="form-group">
