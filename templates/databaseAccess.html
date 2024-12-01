@@ -7,12 +7,251 @@
     <link href="{{ url_for('static', filename='styles/adminstyle.css')}}" rel="stylesheet" />
 </head>
 <!--
-This page should display available rooms (idk how im formatting that and honestly I'm a little peeved that I have the hard job here)
+This page should allow for easy access to the database with several interactive elements,
+I may have to make them take you to different pages because I'm not very familiar with html
 -->
+
+<!--
 <body>
-    <h1>Hotel DBMS Administrator Database Access</h1>
+    <h1>Hotel DBEE Administrator Database Access</h1>
     <form action="/index">
         <button type="submit">Return to Homepage </button>
     </form>
+    <div class="container">
+        <h2>Select a CRUD functionality</h2>
+        <select id="mainDropdown" onchange="showSubMenu()">
+            <option value="">-- Select an Option --</option>
+            <option value="post">Create</option>
+            <option value="get">Read</option>
+            <option value="put">Update</option>
+            <option value="delete">Delete</option>
+        </select>
+
+        <div id="post_menu" class="hidden">
+            <h3>Table Selection (Create) </h3>
+            <select id="table_select_create"> 
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Cr">Guest Table</option>
+                <option value="Room_Cr">Room Table</option>
+                <option value="Booking_Cr">Booking Table</option>
+                <option value="Payment_Cr">Payment Table</option>
+                <option value="Services_Cr">Services Table</option>
+                <option value="Reviews_Cr">Reviews Table</option>
+                <option value="Booking_Services_Cr">Booking Services Table</option>
+            </select>
+        </div>
+
+        <div id="get_menu" class="hidden">
+            <h3>Table Selection (Read) </h3>
+            <select id="table_select_read"> 
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Re">Guest Table</option>
+                <option value="Room_Re">Room Table</option>
+                <option value="Booking_Re">Booking Table</option>
+                <option value="Payment_Re">Payment Table</option>
+                <option value="Services_Re">Services Table</option>
+                <option value="Reviews_Re">Reviews Table</option>
+                <option value="Booking_Services_Re">Booking Services Table</option>
+            </select>
+        </div>
+
+        <div id="put_menu" class="hidden">
+            <h3>Table Selection (Update) </h3>
+            <select id="table_select_update" onchange="showSubSubMenu('put')"> 
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Up">Guest Table</option>
+                <option value="Room_Up">Room Table</option>
+                <option value="Booking_Up">Booking Table</option>
+            </select>
+            <div id="Guest_id" class="hidden">
+                <h4>Guest ID</h4>
+                <input type="text" id="guest_id" name="guest_id">
+            </div>
+            <div id="Room_id" class="hidden">
+                <h4>Room ID</h4>
+                <input type="text" id="room_id" name="room_id">
+            </div>
+            <div id="Booking_id" class="hidden">
+                <h4>Booking ID</h4>
+                <input type="text" id="booking_id" name="booking_id">
+            </div>
+        </div>
+
+        <div id="delete_menu" class="hidden">
+            <h3>Table Selection (Delete) </h3>
+            <select id="table_select_update" onchange="showSubSubMenu('delete')"> 
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Del">Guest Table</option>
+                <option value="Room_Del">Room Table</option>
+                <option value="Booking_Del">Booking Table</option>
+            </select>
+            <div id="Guest_id" class="hidden">
+                <h4>Guest ID</h4>
+                <input type="text" id="guest_id" name="guest_id">
+            </div>
+            <div id="Room_id" class="hidden">
+                <h4>Room ID</h4>
+                <input type="text" id="room_id" name="room_id">
+            </div>
+            <div id="Booking_id" class="hidden">
+                <h4>Booking ID</h4>
+                <input type="text" id="booking_id" name="booking_id">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function showSubMenu() {
+            // Hide all menus
+            document.getElementById('fruitsMenu').classList.add('hidden');
+            document.getElementById('vegetablesMenu').classList.add('hidden');
+            document.getElementById('drinksMenu').classList.add('hidden');
+
+            // Show the selected menu
+            const selectedOption = document.getElementById('mainDropdown').value;
+            if (selectedOption) {
+                document.getElementById(`${selectedOption}Menu`).classList.remove('hidden');
+            }
+        }
+
+        function showSubSubMenu(category) {
+            // Hide all sub-menus within the selected category
+            const menus = document.querySelectorAll(`#${category}Menu div`);
+            menus.forEach(menu => menu.classList.add('hidden'));
+
+            // Show the selected sub-menu
+            const selectedSubOption = document.getElementById(`${category}Dropdown`).value;
+            if (selectedSubOption) {
+                document.getElementById(`${selectedSubOption}Menu`).classList.remove('hidden');
+            }
+        }
+
+    </script>
+</body>
+
+-->
+
+<body>
+    <h1>Hotel DBEE Administrator Database Access</h1>
+    <form action="/index">
+        <button type="submit">Return to Homepage </button>
+    </form>
+    <div class="container">
+        <h2>Select a CRUD functionality</h2>
+        <select id="mainDropdown" onchange="showSubMenu()">
+            <option value="">-- Select an Option --</option>
+            <option value="post">Create</option>
+            <option value="get">Read</option>
+            <option value="put">Update</option>
+            <option value="delete">Delete</option>
+        </select>
+
+        <!-- Create Menu -->
+        <div id="post_menu" class="hidden">
+            <h3>Table Selection (Create)</h3>
+            <select>
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Cr">Guest Table</option>
+                <option value="Room_Cr">Room Table</option>
+                <option value="Booking_Cr">Booking Table</option>
+                <option value="Payment_Cr">Payment Table</option>
+                <option value="Services_Cr">Services Table</option>
+                <option value="Reviews_Cr">Reviews Table</option>
+                <option value="Booking_Services_Cr">Booking Services Table</option>
+            </select>
+        </div>
+
+        <!-- Read Menu -->
+        <div id="get_menu" class="hidden">
+            <h3>Table Selection (Read)</h3>
+            <select>
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Re">Guest Table</option>
+                <option value="Room_Re">Room Table</option>
+                <option value="Booking_Re">Booking Table</option>
+                <option value="Payment_Re">Payment Table</option>
+                <option value="Services_Re">Services Table</option>
+                <option value="Reviews_Re">Reviews Table</option>
+                <option value="Booking_Services_Re">Booking Services Table</option>
+            </select>
+        </div>
+
+        <!-- Update Menu -->
+        <div id="put_menu" class="hidden">
+            <h3>Table Selection (Update)</h3>
+            <select id="table_select_update" onchange="showSubSubMenu('update')">
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Up">Guest Table</option>
+                <option value="Room_Up">Room Table</option>
+                <option value="Booking_Up">Booking Table</option>
+            </select>
+            <div id="Guest_Up" class="hidden">
+                <h4>Guest ID</h4>
+                <input type="text" id="guest_id" name="guest_id">
+            </div>
+            <div id="Room_Up" class="hidden">
+                <h4>Room ID</h4>
+                <input type="text" id="room_id" name="room_id">
+            </div>
+            <div id="Booking_Up" class="hidden">
+                <h4>Booking ID</h4>
+                <input type="text" id="booking_id" name="booking_id">
+            </div>
+        </div>
+
+        <!-- Delete Menu -->
+        <div id="delete_menu" class="hidden">
+            <h3>Table Selection (Delete)</h3>
+            <select id="table_select_delete" onchange="showSubSubMenu('delete')">
+                <option value="">-- Select an Option --</option>
+                <option value="Guest_Del">Guest Table</option>
+                <option value="Room_Del">Room Table</option>
+                <option value="Booking_Del">Booking Table</option>
+            </select>
+            <div id="Guest_Del" class="hidden">
+                <h4>Guest ID</h4>
+                <input type="text" id="guest_id" name="guest_id">
+            </div>
+            <div id="Room_Del" class="hidden">
+                <h4>Room ID</h4>
+                <input type="text" id="room_id" name="room_id">
+            </div>
+            <div id="Booking_Del" class="hidden">
+                <h4>Booking ID</h4>
+                <input type="text" id="booking_id" name="booking_id">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSubMenu() {
+            // Hide all main menus
+            const menus = document.querySelectorAll('.container > div');
+            menus.forEach(menu => menu.classList.add('hidden'));
+
+            // Show the selected main menu
+            const selectedOption = document.getElementById('mainDropdown').value;
+            if (selectedOption) {
+                document.getElementById(`${selectedOption}_menu`).classList.remove('hidden');
+            }
+        }
+
+        function showSubSubMenu(category) {
+            // Get all sub-menus under the selected category
+            const subMenus = document.querySelectorAll(`#${category}_menu > div`);
+
+            // Hide all sub-menus
+            subMenus.forEach(menu => menu.classList.add('hidden'));
+
+            // Get the selected sub-option
+            const selectedSubOption = document.getElementById(`table_select_${category}`).value;
+
+            // Show the corresponding sub-menu
+            if (selectedSubOption) {
+                document.getElementById(selectedSubOption).classList.remove('hidden');
+        }
+}
+    </script>
 </body>
 </html>
