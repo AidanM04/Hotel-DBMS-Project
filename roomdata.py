@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from pprint import pprint
 from json import loads
 import requests
-import os
+
 
 load_dotenv()
 

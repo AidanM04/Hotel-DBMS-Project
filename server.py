@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from roomdata import get_query_result, add_to_table, update_in_table, delete_from_table
 from login import testlogin
 from databasedirector import direct_with_args
