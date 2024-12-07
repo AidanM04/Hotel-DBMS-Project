@@ -3,7 +3,7 @@
 body {
     padding: 2rem;
     background-color: #333;
-    color: rgb(49, 37, 177);
+    color: rgb(92, 157, 211);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -48,4 +48,31 @@ select {
 
 .hidden {
     display: none;
+}
+
+.largecontainer {
+    width: 1000px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.examplecontainer {
+    width: 800px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.fitcontainer {
+    width: max-content;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
 }

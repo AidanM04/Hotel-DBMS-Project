@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ action }} From Database </title>
+    <link href="{{ url_for('static', filename='styles/adminstyle.css')}}" rel="stylesheet" />
+</head>
+
+<body>
+    {% block body %}
+
+        {% if action == "Read" %}
+
+        <h1>{{action}} from Database</h1>
+
+        {% elif action == "Delete" %}
+
+        <h1>{{action}} Item from Database</h1>
+
+        {% elif action == "Create" %}
+
+        <h1>{{action}} Item in Database</h1>
+
+        {% elif action == "Update" %}
+
+        <h1>{{action}} Item in Database</h1>
+
+        {% else %}
+
+        <p> Something went wrong on the way to this page...</p>
+
+        {% endif %}
+    {% endblock %}
+    
+    <div class="largecontainer">
+        <p>{{ API_result }}</p>
+    </div>
+
+
+    <form action="/adminAccess">
+        <button type="submit">Return to Database Access Form</button>
+    </form>
+
+    <form action="/index">
+        <button type="submit" style="font-size: 1rem;">Return to Homepage</button>
+    </form>
+</body>
+
+</html>

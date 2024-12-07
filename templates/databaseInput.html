@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ action }} From Database </title>
+    <link href="{{ url_for('static', filename='styles/adminstyle.css')}}" rel="stylesheet" />
+</head>
+
+<body>
+
+    <h1>{{ action }} Datapoint with {{ table }} Function</h1>
+
+    <div class="examplecontainer">
+    <h4> Please write your input json with the following format: </h4>
+
+    {% block body %}
+
+        {% if table == "add_guest" %}
+
+        <p> {
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "phone": "1234567890"} 
+        </p>
+
+        {% elif table == "add_room" %}
+
+        <p> {"description": "A cozy standard room",
+            "pricePerNight": "100.00",
+            "roomFloor": 1,
+            "roomNumber": 102,
+            "roomType": "standard"}
+        </p>
+
+        {% elif table == "add_booking" %}
+
+        <p>{
+            "checkInDate": "Mon, 25 Nov 2024 14:00:00 GMT",
+            "checkOutDate": "Thu, 28 Nov 2024 11:00:00 GMT",
+            "guestID": 1,
+            "paymentStatus": "paid",
+            "roomID": 1}
+        </p>
+
+        {% elif table == "add_payment" %}
+
+        <p> {
+            "bookingID": 1,
+            "paymentMethod": "credit card",
+            "transactionDate": "2024-12-01T10:00:00",
+            "amount": 200.00
+            }
+        </p>
+
+        {% elif table == "add_service" %}
+
+        <p>{"description": "Relaxing full-body spa treatment",
+            "serviceName": "Spa Treatment",
+            "servicePrice": 120.0}
+        </p>
+
+        {% elif table == "add_review" %}
+
+        <p>{"bookingID": 1,
+            "comments": "Amazing stay! Highly recommend.",
+            "guestID": 1,
+            "rating": 5,
+            "reviewDate": "2024-11-29"}
+        </p>
+
+        {% elif table == "add_booking_service" %}
+
+        <p>{"bookingID": 1, "quantity": 2, "serviceID": 1}
+        </p>
+
+        {% elif table == "update_guest" %}
+
+        <p>{
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john.doe@example.com",
+            "phone": "1234567890"} 
+        </p>
+
+        {% elif table == "update_room" %}
+
+        <p>{"description": "A cozy standard room",
+            "pricePerNight": "100.00",
+            "roomFloor": 1,
+            "roomNumber": 102,
+            "roomType": "standard"}
+        </p>
+
+        {% elif table == "update_booking" %}
+
+        <p>{
+            "checkInDate": "Mon, 25 Nov 2024 14:00:00 GMT",
+            "checkOutDate": "Thu, 28 Nov 2024 11:00:00 GMT",
+            "guestID": 1,
+            "paymentStatus": "paid",
+            "roomID": 1}
+        </p>
+
+        {% else %}
+
+        <p> Something went wrong on the way to this page...</p>
+
+        {% endif %}
+    {% endblock %}
+    </div>
+
+    <div class="fitcontainer">
+        <form id="jsonInputForm" action="/databaseAddUpdate">
+            <!-- Hidden inputs to store variables for later-->
+            <input type="hidden" id="crudAction" name="crudAction" value="{{ action }}">
+            <input type="hidden" id="cuChoice" name="cuChoice" value="{{ true_action }}">
+            <input type="hidden" id="funcChoice" name="funcChoice" value="{{ table }}">
+            {% if item_id %}
+            <input type="hidden" id="idForUpdate" name="idForUpdate" value="{{ item_id }}">
+            {% endif %}
+
+            <input type="text" id="json_to_send" name="json_to_send" style="width: 800px;" placeholder="Enter json here...">
+            <button type="submit" onclick="updatedata()">Submit</button>
+        </form>
+    </div>
+
+
+    <form action="/adminAccess">
+        <button type="submit">Return to Database Access Form</button>
+    </form>
+
+    <form action="/index">
+        <button type="submit" style="font-size: 1rem;">Return to Homepage</button>
+    </form>
+
+</body>
+
+
+
+</html>

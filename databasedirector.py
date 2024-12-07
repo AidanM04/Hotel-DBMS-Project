@@ -66,7 +66,7 @@ def direct_with_args(function_choice, table_choice, ID):
             return result
 
         elif table_choice == 'Booking_Re':
-            result.append('bookings')
+            result.append('get_bookings')
             return result
 
         elif table_choice == 'Payment_Re':
